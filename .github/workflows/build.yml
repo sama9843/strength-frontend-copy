@@ -1,0 +1,28 @@
+name: Build static site
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies with npm
+        run: npm ci
+      - name: Build with npm
+        run: npm run build
+      - name: Push static site files to repo for deployment
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: build
+          destination-github-username: timurtripp
+          destination-repository-name: csci5828-strength-frontend-build
+          target-branch: main

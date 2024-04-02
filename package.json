@@ -1,5 +1,5 @@
 {
-  "name": "react-tailwind-css-starter-pack",
+  "name": "team-strength-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,11 +10,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thepranaygupta/react-tailwind-css-starter-pack.git"
+    "url": "git+https://github.com/CSCI-5828-S24/team-strength-frontend.git"
   },
-  "author": "Pranay Gupta",
+  "author": "Team Strength",
   "bugs": {
-    "url": "https://github.com/thepranaygupta/react-tailwind-css-starter-pack/issues"
+    "url": "https://github.com/CSCI-5828-S24/team-strength-frontend/issues"
   },
   "scripts": {
     "start": "react-scripts start",
