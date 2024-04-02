@@ -1,6 +1,6 @@
 # Strength training tracker app
 
-Deployment URL: https://strength.silvercrater.io
+Deployment URL: https://strength.silvercrater.dev
 
 ## Development
 
@@ -26,4 +26,4 @@ The project is set up to use `postcss-cli` to process your CSS files. You can ad
 
 ## Deployment
 
-Simply push to the main branch and it will deploy automatically (spooky).
+Simply push to the main branch and it will deploy to production automatically. Use caution!!!
