@@ -29,7 +29,7 @@ jobs:
           name: build
           path: build
       - name: Push static site to downstream repo for deployment
-        uses: cpina/github-action-push-to-another-repository@v1
+        uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
