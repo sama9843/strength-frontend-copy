@@ -30,6 +30,8 @@ jobs:
         with:
           name: build
           path: build
+      - name: Create CNAME
+        run: "echo 'dev-staging-strength.silvercrater.dev' > build/CNAME" 
       - name: Push static site to downstream repo for deployment
         uses: cpina/github-action-push-to-another-repository@main
         env:
