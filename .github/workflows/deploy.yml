@@ -1,27 +1,19 @@
-name: Build static site and deploy to production
+name: Deploy to production
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: [ main ]
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["Build artificat"]
+    types: [requested]
+    branches: ["main"]
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install dependencies with npm
-        run: npm ci
-      - name: Build with npm
-        run: npm run build
   deploy:
-    needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Push static site files to repo for deployment
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: build
+      - name: Push static site to downstream repo for deployment
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
