@@ -1,8 +1,8 @@
-name: Build static site
+name: Build static site and deploy to production
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: [ main ]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
@@ -17,6 +17,10 @@ jobs:
         run: npm ci
       - name: Build with npm
         run: npm run build
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Push static site files to repo for deployment
         uses: cpina/github-action-push-to-another-repository@main
         env:
@@ -24,5 +28,5 @@ jobs:
         with:
           source-directory: build
           destination-github-username: timurtripp
-          destination-repository-name: csci5828-strength-frontend-build
+          destination-repository-name: csci5828-strength-frontend-build-prod
           target-branch: main
