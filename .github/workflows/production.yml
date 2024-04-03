@@ -35,6 +35,6 @@ jobs:
         with:
           source-directory: build
           destination-github-username: timurtripp
-          destination-repository-name: csci5828-strength-frontend-build-prod
+          destination-repository-name: csci5828-strength-frontend-build-production
           target-branch: main
 
