@@ -1,6 +1,6 @@
 # Strength training tracker app
 
-Deployment URL: https://strength.silvercrater.dev
+Deployed at https://strength.silvercrater.dev
 
 ## Development
 
@@ -24,6 +24,14 @@ Deployment URL: https://strength.silvercrater.dev
 
 The project is set up to use `postcss-cli` to process your CSS files. You can add your own `tailwind.config.js` file to customize your Tailwind setup.
 
+## Staging
+
+Simply push to the `staging` branch and it will deploy to staging automatically.
+
+Staging URL: https://dev-staging-strength.silvercrater.dev
+
 ## Deployment
 
-Simply push to the main branch and it will deploy to production automatically. Use caution!!!
+Simply push to the `main` branch and it will deploy to production automatically. Use caution!!!
+
+Deployment URL: https://strength.silvercrater.dev
