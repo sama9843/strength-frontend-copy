@@ -21,6 +21,7 @@ jobs:
         with:
           name: build
           path: build
+          retention-days: 3
   deploy-to-staging:
     needs: build
     runs-on: ubuntu-latest
