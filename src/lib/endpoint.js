@@ -7,9 +7,13 @@ export const HTTP_DELETE = 'DELETE';
 
 export async function request(target, method, body) {
   const fetchParams = {
-    method: method
+    method,
+    headers: {
+      Accept: 'application/json'
+    }
   };
   if (body) {
+    fetchParams.headers['Content-Type'] = 'application/json;charset=utf-8';
     fetchParams.body = JSON.stringify(body);
   }
   const response = await fetch(`${ENDPOINT}/${target}`, fetchParams);
