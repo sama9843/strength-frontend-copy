@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { HTTP_POST, request, responseValue } from '../lib/endpoint';
+import React, { useState } from 'react';
+import { HTTP_POST, request } from '../lib/endpoint';
 
 function SubmitButton({ name, submitting }) {
   return submitting ? (

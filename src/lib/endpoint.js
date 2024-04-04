@@ -1,4 +1,4 @@
-export const ENDPOINT = process.env.NODE_ENV == 'production' ? 'https://ep-strength.silvercrater.dev/api' : 'http://localhost:8080/api';
+export const ENDPOINT = process.env.NODE_ENV === 'production' ? 'https://ep-strength.silvercrater.dev/api' : 'http://localhost:8080/api';
 export const HTTP_GET = 'GET';
 export const HTTP_POST = 'POST';
 export const HTTP_PUT = 'PUT';
