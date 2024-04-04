@@ -1,4 +1,4 @@
-name: Build artificat and deploy to staging
+name: Build artifact and deploy to staging
 on:
   push:
     branches: ["staging"]
