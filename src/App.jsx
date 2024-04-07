@@ -1,15 +1,17 @@
-import Form from './component/Form';
 import './App.css';
+import Blocker from './components/Blocker';
+import Error from './components/Error';
+import Main from './views/Main';
+import { useState } from 'react';
 
-function App() {
+export default function App() {
+  const [blocking, setBlocking] = useState(false);
+  const [error, setError] = useState(false);
   return (
-    <main className="flex justify-center gap-4 flex-col min-h-screen">
-      <h1 className="text-3xl text-center font-bold">Form</h1>
-      <div className="mx-auto">
-        <Form />
-      </div>
-    </main>
+    <>
+      {blocking && <Blocker />}
+      {error && <Error errorCallback={setError} />}
+      <Main blockingCallback={setBlocking} errorCallback={setError} />
+    </>
   );
 }
-
-export default App;
