@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function Blocker() {
   return (
     <div className="absolute flex items-center justify-center bg-white w-screen h-screen cursor-wait">
