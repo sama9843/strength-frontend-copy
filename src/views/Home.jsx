@@ -2,7 +2,7 @@ import React, { useState ,useEffect} from 'react';
 import { HTTP_POST, Request } from '../utils/api';
 
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
-import ReactWordcloud from 'react-wordcloud';
+//import ReactWordcloud from 'react-wordcloud';
 
 
 const libraries = ['places'];
@@ -31,7 +31,6 @@ const testwords = [
 export default function Main({ blockingCallback, errorCallback }) {
 
   const [data, setData] = useState([]);
-  const [markers, setMarkers] = useState([]);
   const places = [];
   const url = "http://localhost:3000/api?location=40.0150%2C-105.270546&radius=1000&keyword=gym&key=AIzaSyDwYKdRzM84YjBmH6QLpxFXfpRPEIbNn8k";
   fetch(url)
@@ -84,7 +83,8 @@ export default function Main({ blockingCallback, errorCallback }) {
         <div className="bg-slate-100 dark:bg-gray-900">
           <h2 className="text-4xl font-extrabold dark:text-white">Tips</h2>
           <div style={{ height: 700, width: 600 }}>
-            <ReactWordcloud words={testwords}></ReactWordcloud>
+            {/*<ReactWordcloud words={testwords}></ReactWordcloud>*/}
+            Tips here.
           </div>
         </div>
         <div className="bg-teal-100 dark:bg-gray-900">
