@@ -20,6 +20,19 @@ module.exports = merge(common, {
     host: 'localhost',
     port: process.env.PORT || 3000,
     historyApiFallback: true,
-    open: true
+    open: true,
+    proxy: {
+      '/api': {
+        target: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+        pathRewrite: {'^/api' : ''}, // In this case we don't pass `api` path
+        secure: false,
+        changeOrigin: true
+      }
+    },
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "*",
+      "Access-Control-Allow-Headers": "*",
+    }
   }
 });
