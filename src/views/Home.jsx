@@ -7,8 +7,8 @@ import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 
 const libraries = ['places'];
 const mapContainerStyle = {
-  width: '32vw',
-  height: '32vh',
+  width: '100%',
+  height: '256px',
 };
 const center = {
   lat: 40.015, // default latitude
@@ -76,7 +76,7 @@ export default function Main({ blockingCallback, errorCallback }) {
   return (
     <main class="p-4">
       <h1 className="mb-2 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl xl:text-6xl text-center">Fitness Dashboard</h1>
-      <p className="text-lg mb-6 text-center">Stay on top of your goals.</p>
+      <p className="text-xl mb-6 text-center">Stay on top of your goals.</p>
       {/*<div className="mx-auto">
         <Form blockingCallback={blockingCallback} errorCallback={errorCallback} />
       </div>*/}
@@ -91,14 +91,14 @@ export default function Main({ blockingCallback, errorCallback }) {
         <div className="bg-green-100 border border-green-300 rounded-xl p-6 text-center">
           <h2 className="text-3xl xl:text-4xl font-extrabold mb-2">📚 Latest Articles</h2>
           <p className="text-lg mb-6">Learn new techniques to train and stay fit.</p>
-          <div className="flex flex-row flex-wrap gap-4 pl-6 pr-6 justify-center text-lg font-serif">
-            <a className="bg-white shadow text-black border-l-8 border-green-500 rounded-md px-3 py-2 w-full" href="#">
+          <div className="flex flex-row flex-wrap gap-4 xl:pl-4 xl:pr-4 justify-center text-lg font-serif">
+            <a className="bg-white shadow hover:shadow-md transition-shadow text-black border-l-8 border-green-500 rounded-md px-3 py-2 w-full" href="#">
                 Stretches to Maximize Workout
             </a>
-            <a className="bg-white shadow text-black border-l-8 border-green-500 rounded-md px-3 py-2 w-full" href="#">
+            <a className="bg-white shadow hover:shadow-md transition-shadow text-black border-l-8 border-green-500 rounded-md px-3 py-2 w-full" href="#">
                 Meals to Eat Before Working Out
             </a>
-            <a className="bg-white shadow text-black border-l-8 border-green-500 rounded-md px-3 py-2 w-full" href="#">
+            <a className="bg-white shadow hover:shadow-md transition-shadow text-black border-l-8 border-green-500 rounded-md px-3 py-2 w-full" href="#">
                 Best Exercises for Building Arms
             </a>
           </div>
@@ -106,9 +106,11 @@ export default function Main({ blockingCallback, errorCallback }) {
         <div className="bg-orange-100 border border-orange-300 rounded-xl p-6 text-center">
           <h2 className="text-3xl xl:text-4xl font-extrabold mb-2">💪 Nearby Gyms</h2>
           <p className="text-lg mb-6">Find the highest-rated gyms in your area.</p>
-          <GoogleMap mapContainerStyle={mapContainerStyle} zoom={8} center={center}>
-           <Marker position={{lat: 40.0150, lng: 255.9656}} />
-          </GoogleMap>
+          <div className="border border-orange-300">
+            <GoogleMap mapContainerStyle={mapContainerStyle} zoom={8} center={center}>
+            <Marker position={{lat: 40.0150, lng: 255.9656}} />
+            </GoogleMap>
+          </div>
         {data ? <pre>{JSON.stringify(data, null, 2).replace(/"|,|{|}|\[|\]/g,"")}</pre> : 'Loading...'}
         </div>
       </div>
