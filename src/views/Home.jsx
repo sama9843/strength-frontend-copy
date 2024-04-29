@@ -75,21 +75,21 @@ export default function Main({ blockingCallback, errorCallback }) {
 
   return (
     <main class="p-4">
-      <h1 className="mb-2 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl text-center">Get Motivated</h1>
-      <p className="text-xl mb-6 text-center">Never lose sight of your goals.</p>
+      <h1 className="mb-2 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl xl:text-6xl text-center">Fitness Dashboard</h1>
+      <p className="text-lg mb-6 text-center">Stay on top of your goals.</p>
       {/*<div className="mx-auto">
         <Form blockingCallback={blockingCallback} errorCallback={errorCallback} />
       </div>*/}
       <div className="grid lg:grid-cols-3 gap-4 content-normal">
         <div className="bg-blue-100 border border-blue-300 rounded-xl p-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-2">🔥 What‘s Trending</h2>
+          <h2 className="text-3xl xl:text-4xl font-extrabold mb-2">🔥 What’s Trending</h2>
           <p className="text-lg mb-6">See what fitness topics people are talking about.</p>
           <div>
             {/*<ReactWordcloud words={testwords}></ReactWordcloud>*/}
           </div>
         </div>
         <div className="bg-green-100 border border-green-300 rounded-xl p-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-2">📚 Latest Articles</h2>
+          <h2 className="text-3xl xl:text-4xl font-extrabold mb-2">📚 Latest Articles</h2>
           <p className="text-lg mb-6">Learn new techniques to train and stay fit.</p>
           <div className="flex flex-row flex-wrap gap-4 pl-6 pr-6 justify-center text-lg font-serif">
             <a className="bg-white shadow text-black border-l-8 border-green-500 rounded-md px-3 py-2 w-full" href="#">
@@ -104,7 +104,7 @@ export default function Main({ blockingCallback, errorCallback }) {
           </div>
         </div>
         <div className="bg-orange-100 border border-orange-300 rounded-xl p-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-2">💪 Nearby Gyms</h2>
+          <h2 className="text-3xl xl:text-4xl font-extrabold mb-2">💪 Nearby Gyms</h2>
           <p className="text-lg mb-6">Find the highest-rated gyms in your area.</p>
           <GoogleMap mapContainerStyle={mapContainerStyle} zoom={8} center={center}>
            <Marker position={{lat: 40.0150, lng: 255.9656}} />
