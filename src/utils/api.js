@@ -11,7 +11,7 @@ export class Request {
     this.target = target;
     this.method = method;
     this.body = body;
-    this.response = {};
+    this.response = null;
   }
 
   async blocking(blockingCallback, errorCallback, dropIfBlocking = true) {
@@ -19,6 +19,7 @@ export class Request {
       // There is already a blocking request, drop this one.
       return this;
     }
+    this.response = null;
     blockingPromise = request(this.target, this.method, this.body);
     blockingCallback(blocking = true);
     errorCallback(false);
@@ -32,8 +33,15 @@ export class Request {
     return this;
   }
 
-  async background() {
-    return await request(this.target, this.method, this.body);
+  async background(errorCallback) {
+    errorCallback(false);
+    this.response = null;
+    try {
+      this.response = await request(this.target, this.method, this.body);
+    } catch(exception) {
+      errorCallback(true);
+    }
+    return this;
   }
 
   getResponseValue(propertyName) {
@@ -54,6 +62,6 @@ async function request(target, method, body) {
   if (response.status === 200) {
     return await response.json();
   } else {
-    return null;
+    throw new Error('Error: Response status code was ' + response.status + '!');
   }
 }

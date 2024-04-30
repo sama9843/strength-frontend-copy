@@ -18,7 +18,9 @@ export default function App() {
     <>
       {blocking && 
           <div className="absolute flex items-center justify-center bg-white w-screen h-screen cursor-wait">
-            <Spinner />
+            <div class="w-16 h-16">
+              <Spinner />
+            </div>
           </div>}
       {error && <Error errorCallback={setError} />}
       <RouterProvider router={router} />
