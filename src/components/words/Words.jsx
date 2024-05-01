@@ -1,5 +1,5 @@
 import React from 'react';
-import Wordcloud from './WordCloud';
+import Wordcloud from './Wordcloud';
 
 export default function Words() {
   return (

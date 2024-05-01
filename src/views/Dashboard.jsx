@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Gyms from '../components/gyms/Gyms';
+// import Gyms from '../components/gyms/Gyms';
 import Articles from '../components/articles/Articles';
-import Words from '../components/words/Words';
+// import Words from '../components/words/Words';
 
 export default function Dashboard({ blockingCallback, errorCallback }) {
   return (
