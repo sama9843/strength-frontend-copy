@@ -1,0 +1,16 @@
+{
+  "name": "team-strength-acceptance-test",
+  "version": "1.0.0",
+  "description": "Contains acceptance tests for the fitness dashboard.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "chromedriver": "^124.0.1",
+    "geckodriver": "^4.4.0",
+    "mocha": "^10.4.0",
+    "selenium-webdriver": "^4.20.0"
+  }
+}
