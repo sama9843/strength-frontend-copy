@@ -24,7 +24,7 @@ export default function ArticleList({ search, error, errorCallback }) {
     <>
       {error && <Error tryAgainCallback={errorCallback} errorCallback={errorCallback} />}
       {articles instanceof Array ? (
-        <ul>
+        <ul className="article-list">
           {articles.map(article => (<li key={article.id}><Article title={article.title} url={article.url} publicationTime={article.publicationTime} /></li>))}
         </ul>
       ) : error ||
