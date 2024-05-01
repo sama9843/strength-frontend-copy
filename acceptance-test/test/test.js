@@ -24,7 +24,7 @@ describe('articles', function () {
     const hostname = new URL(url).hostname;
     assert(articles.length > 4);
     articles.forEach(async function(article) {
-      assert(article.isDisplayed());
+      assert(await article.isDisplayed());
       assert((await article.getText()).length > 0);
       assert((new URL(await article.getAttribute('href')).hostname) != hostname);
     });
@@ -46,7 +46,7 @@ describe('articles', function () {
     const articles = await driver.findElements(locateWith(By.css('.article-list li a')).below(searchField));
     assert(articles.length > 0);
     articles.forEach(async function(article) {
-      assert(article.isDisplayed());
+      assert(await article.isDisplayed());
       assert((await article.getText()).toLowerCase().includes(searchQuery));
     });
   });
