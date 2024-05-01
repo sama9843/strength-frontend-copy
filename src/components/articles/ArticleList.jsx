@@ -4,14 +4,13 @@ import Error from '../Error';
 import Spinner from '../Spinner';
 import Article from './Article';
 
-export default function ArticleList({ search }) {
+export default function ArticleList({ search, error, errorCallback }) {
   const [articles, setArticles] = useState(null);
-  const [error, setError] = useState(false);
   useEffect(() => {
     let ignore = false;
     if (!error) {
       (async function() {
-        const response = (await new Request('v1/articles', HTTP_GET, { search }).background(setError)).response;
+        const response = (await new Request('v1/articles', HTTP_GET, { search }).background(errorCallback)).response;
         if (!ignore) {
           setArticles(response);
         }
@@ -23,7 +22,7 @@ export default function ArticleList({ search }) {
   }, [search, error]);
   return (
     <>
-      {error && <Error tryAgainCallback={setError} errorCallback={setError} />}
+      {error && <Error tryAgainCallback={errorCallback} errorCallback={errorCallback} />}
       {articles instanceof Array ? (
         <ul>
           {articles.map(article => (<li key={article.id}><Article title={article.title} url={article.url} publicationTime={article.publicationTime} /></li>))}
