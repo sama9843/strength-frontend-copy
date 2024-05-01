@@ -15,5 +15,5 @@ jobs:
         run: npm ci
       - name: Run acceptance tests
         run: npm test
-        with:
+        env:
           ACCEPTANCE_TEST_URL: https://dev-staging-strength.silvercrater.dev/
