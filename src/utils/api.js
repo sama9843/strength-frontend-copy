@@ -55,8 +55,12 @@ async function request(target, method, body) {
     headers: { Accept: 'application/json' }
   };
   if (body) {
-    fetchParams.headers['Content-Type'] = 'application/json;charset=utf-8';
-    fetchParams.body = JSON.stringify(body);
+    if (method === HTTP_POST) {
+      fetchParams.headers['Content-Type'] = 'application/json;charset=utf-8';
+      fetchParams.body = JSON.stringify(body);
+    } else {
+      target += '?' + new URLSearchParams(body).toString();
+    }
   }
   const response = await fetch(`${ENDPOINT}/${target}`, fetchParams);
   if (response.status === 200) {

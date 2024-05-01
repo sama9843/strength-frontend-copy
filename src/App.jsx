@@ -1,7 +1,7 @@
 import './App.css';
 import Spinner from './components/Spinner';
 import Error from './components/Error';
-import Home from './views/Home';
+import Dashboard from './views/Dashboard';
 import React, { useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ export default function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Home blockingCallback={setBlocking} errorCallback={setError} />
+      element: <Dashboard blockingCallback={setBlocking} errorCallback={setError} />
     }
   ]);
   return (

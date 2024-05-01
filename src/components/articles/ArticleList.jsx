@@ -10,7 +10,7 @@ export default function ArticleList({ search }) {
   useEffect(() => {
     let ignore = false;
     (async function() {
-      const response = (await new Request('v1/articles', HTTP_GET).background(setError)).response;
+      const response = (await new Request('v1/articles', HTTP_GET, { search }).background(setError)).response;
       if (!ignore) {
         setArticles(response);
       }
