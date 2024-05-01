@@ -9,19 +9,21 @@ export default function ArticleList({ search }) {
   const [error, setError] = useState(false);
   useEffect(() => {
     let ignore = false;
-    (async function() {
-      const response = (await new Request('v1/articles', HTTP_GET, { search }).background(setError)).response;
-      if (!ignore) {
-        setArticles(response);
-      }
-    })();
+    if (!error) {
+      (async function() {
+        const response = (await new Request('v1/articles', HTTP_GET, { search }).background(setError)).response;
+        if (!ignore) {
+          setArticles(response);
+        }
+      })();
+    }
     return () => {
       ignore = true;
     }
-  }, [search]);
+  }, [search, error]);
   return (
     <>
-      {error && <Error errorCallback={setError} />}
+      {error && <Error tryAgainCallback={setError} errorCallback={setError} />}
       {articles instanceof Array ? (
         <ul>
           {articles.map(article => (<li key={article.id}><Article title={article.title} url={article.url} publicationTime={article.publicationTime} /></li>))}
