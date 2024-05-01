@@ -1,7 +1,10 @@
 import { Builder, By } from 'selenium-webdriver';
+import { Options as ChromeOptions } from 'selenium-webdriver/chrome.js';
 
 const url = process.env['ACCEPTANCE_TEST_URL'];
-const driver = await new Builder().forBrowser('chrome').build();
+const options = new ChromeOptions();
+const driver = await new Builder().forBrowser('chrome').setChromeOptions(new ChromeOptions()
+  .addArguments('headless', 'remote-debugging-port=9222')).build();
 
 before(async function () {
   await driver.get(url);
