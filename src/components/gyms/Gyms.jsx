@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GymMap from './GymMap';
 import GymRatings from './GymRatings';
 import { useLoadScript } from '@react-google-maps/api';
@@ -7,6 +7,7 @@ import Spinner from '../Spinner';
 const libraries = ['places'];
 
 export default function Gyms() {
+  const [error, setError] = useState(false);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: 'AIzaSyDwYKdRzM84YjBmH6QLpxFXfpRPEIbNn8k',
     libraries,
@@ -22,7 +23,7 @@ export default function Gyms() {
               <Spinner />
             </div>
           </div>}
-      <GymRatings />
+      <GymRatings error={error} />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-// import Gyms from '../components/gyms/Gyms';
+import Gyms from '../components/gyms/Gyms';
 import Articles from '../components/articles/Articles';
 // import Words from '../components/words/Words';
 
@@ -20,11 +20,11 @@ export default function Dashboard({ blockingCallback, errorCallback }) {
           <p className="text-lg mb-6">Learn new techniques to train and stay fit.</p>
           <Articles />
         </div>
-        {/*<div className="bg-orange-200 rounded-xl p-6 text-center">
+        <div className="bg-orange-200 rounded-xl p-6 text-center">
           <h2 className="text-3xl xl:text-4xl font-bold mb-2">💪 Nearby Gyms</h2>
           <p className="text-lg mb-6">Find the highest-rated gyms in your area.</p>
           <Gyms />
-        </div>*/}
+        </div>
       </div>
     </main>
   );
