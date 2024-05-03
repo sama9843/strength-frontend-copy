@@ -23,7 +23,7 @@ export default function Gyms() {
               <Spinner />
             </div>
           </div>}
-      <GymRatings error={error} />
+      <GymRatings error={error} errorCallback={setError}/>
     </>
   );
 }
