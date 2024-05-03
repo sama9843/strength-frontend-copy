@@ -10,6 +10,7 @@ export default function ArticleList({ search, error, errorCallback }) {
     let ignore = false;
     if (!error) {
       (async function() {
+        setArticles(null);
         const response = (await new Request('v1/articles', HTTP_GET, { search }).background(errorCallback)).response;
         if (!ignore) {
           setArticles(response);
@@ -24,12 +25,13 @@ export default function ArticleList({ search, error, errorCallback }) {
     <>
       {error && <Error tryAgainCallback={errorCallback} errorCallback={errorCallback} />}
       {articles instanceof Array ? (
-        <ul className="article-list">
-          {articles.map(article => (<li key={article.id}><Article title={article.title} url={article.url} publicationTime={article.publicationTime} /></li>))}
-        </ul>
+        articles.length > 0 ?
+          <ul className="article-list">
+            {articles.map(article => (<li key={article.id}><Article title={article.title} url={article.url} publicationTime={article.publicationTime} /></li>))}
+          </ul> : <p className="font-bold pt-4">No articles match your search.</p>
       ) : error ||
         <div className="text-center">
-          <div className="w-10 h-10 mx-auto">
+          <div className="w-10 h-10 mx-auto my-4">
             <Spinner />
           </div>
         </div>}

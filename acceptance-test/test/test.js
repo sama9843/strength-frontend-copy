@@ -31,7 +31,7 @@ describe('articles', function () {
   it('should display search results in response to user search query', async function () {
     this.timeout(3000);
     const searchQuery = 'resistance band';
-    const searchField = await driver.findElement(By.id('articles-search'));
+    const searchField = await driver.findElement(By.css('.search-articles input[name="search"]'));
     await driver.actions()
       // Moves cursor to search field and clicks it
       .move({ origin: searchField })
