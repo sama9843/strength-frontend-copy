@@ -4,14 +4,14 @@ import Error from '../Error';
 import Spinner from '../Spinner';
 import Article from './Article';
 
-export default function ArticleList({ search, error, errorCallback }) {
+export default function ArticleList({ search, count, error, errorCallback }) {
   const [articles, setArticles] = useState(null);
   useEffect(() => {
     let ignore = false;
     if (!error) {
       (async function() {
         setArticles(null);
-        const response = (await new Request('v1/articles', HTTP_GET, { search }).background(errorCallback)).response;
+        const response = (await new Request('v1/articles', HTTP_GET, { search, count }).background(errorCallback)).response;
         if (!ignore) {
           setArticles(response);
         }

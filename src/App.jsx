@@ -1,9 +1,10 @@
 import './App.css';
 import Spinner from './components/Spinner';
 import Error from './components/Error';
-import Dashboard from './views/Dashboard';
+import DashboardView from './views/DashboardView';
 import React, { useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import ArticlesView from './views/ArticlesView';
 
 export default function App() {
   const [blocking, setBlocking] = useState(false);
@@ -11,7 +12,7 @@ export default function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Dashboard blockingCallback={setBlocking} errorCallback={setError} />
+      element: <DashboardView blockingCallback={setBlocking} errorCallback={setError} />
     }
   ]);
   return (
