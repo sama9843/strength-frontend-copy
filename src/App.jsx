@@ -4,7 +4,6 @@ import Error from './components/Error';
 import DashboardView from './views/DashboardView';
 import React, { useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import ArticlesView from './views/ArticlesView';
 
 export default function App() {
   const [blocking, setBlocking] = useState(false);
