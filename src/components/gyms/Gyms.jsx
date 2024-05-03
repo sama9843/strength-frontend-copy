@@ -15,7 +15,7 @@ export default function Gyms() {
   return (
     <>
         {isLoaded ?
-          <div className="border border-orange-300">
+          <div className="shadow">
             <GymMap />
           </div> : loadError ? <div>Error loading maps</div> :
           <div className="text-center">
