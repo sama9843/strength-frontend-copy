@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Wordcloud from './Wordcloud';
 
 export default function Words() {
+  const [error, setError] = useState(false);
   return (
     <>
-      <Wordcloud />
+      <Wordcloud error={error} errorCallback={setError}/>
     </>
   );
 }
