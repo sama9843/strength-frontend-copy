@@ -1,22 +1,52 @@
-import React from 'react';
-//import ReactWordcloud from 'react-wordcloud';
+import React, { useEffect, useState } from 'react';
+import { HTTP_GET, Request } from '../../utils/api';
+import WordCloud from 'react-d3-cloud';
 
 const testwords = [
-  { text: "strength", value: 1000 },
-  { text: "weights", value: 500 },
-  { text: "arms", value: 200 },
-  { text: "legs", value: 400 },
-  { text: "back", value: 100 },
-  { text: "exercise", value: 2000 },
-  { text: "supplements", value: 700 },
-  { text: "workout", value: 1500 },
-  { text: "conditioning", value: 400 }
+  { text: "strength"},
+  { text: "weights"},
+  { text: "arms"},
+  { text: "legs"},
+  { text: "back"},
+  { text: "exercise"},
+  { text: "supplements"},
+  { text: "workout"},
+  { text: "conditioning"}
 ];
+const fontSize = 30;
+const rotate = () => 0;
 
-export default function Wordcloud() {
+
+export default function Wordcloud({error, errorCallback}) {
+  const [tips, setTips] = useState(null);
+  useEffect(() => {
+    let ignore = false;
+    if (!error) {
+      (async function() {
+        setTips(null);
+        const response = (await new Request('v1/articles', HTTP_GET).background(errorCallback)).response;
+        if (!ignore) {
+          setTips(response);
+        }
+      })();
+    }
+    return () => {
+      ignore = true;
+    }
+  }, [error]);
   return (
     <>
-      {/*<ReactWordcloud words={testwords}></ReactWordcloud>*/}
+      <WordCloud
+      width={1000}
+      height={200}
+      data={testwords}
+      //data={JSON.stringify(tips, null, 2)}
+      fontSize={fontSize}
+      rotate={rotate}
+      padding={3}
+      spiral="rectangular"
+      random={Math.random}
+  />
     </>
   );
 }
