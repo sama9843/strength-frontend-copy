@@ -39,8 +39,8 @@ export default function Wordcloud({error, errorCallback}) {
       <WordCloud
       width={1000}
       height={200}
-      data={testwords}
-      //data={JSON.stringify(tips, null, 2)}
+      //data={testwords}
+      data={JSON.stringify(tips, null, 2)}
       fontSize={fontSize}
       rotate={rotate}
       padding={3}
