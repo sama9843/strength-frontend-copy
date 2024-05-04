@@ -15,10 +15,10 @@ export default function Wordcloud({error, errorCallback}) {
     if (!error) {
       (async function() {
         setTips(null);
-        const response = (await new Request('v1/articles', HTTP_GET).background(errorCallback)).response;
+        const response = (await new Request('v1/words', HTTP_GET).background(errorCallback)).response;
         if (!ignore) {
           for (let article of response) {
-            words.push({text: article.title});
+            words.push({text: article.text});
           }
           setTips(words);
         }
