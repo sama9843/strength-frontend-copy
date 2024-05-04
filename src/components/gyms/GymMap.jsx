@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GoogleMap, Marker } from '@react-google-maps/api';
 
 const mapContainerStyle = {
@@ -11,10 +11,29 @@ const center = {
   lng: 254.9656, // default longitude
 };
 
+
 export default function GymMap() {
+
+  const [marks, setMarks] = useState([]);
+  const onMapClick = (e) => {
+    setMarks((current) => [
+        ...current,
+        {
+          lat: e.latLng.lat(),
+          lng: e.latLng.lng()
+        }
+      ]);
+    };
   return (
-    <GoogleMap mapContainerStyle={mapContainerStyle} zoom={8} center={center}>
-      <Marker position={{lat: 40.0150, lng: 255.9656}} />
+    <GoogleMap mapContainerStyle={mapContainerStyle} zoom={8} center={center}onClick={onMapClick}
+    >           
+      {marks.map((marker) => (
+          <Marker 
+            position={{ 
+              lat: marker.lat,
+              lng: marker.lng 
+            }} />
+      ))}
     </GoogleMap>
   );
 }
