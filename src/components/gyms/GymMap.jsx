@@ -8,7 +8,7 @@ const mapContainerStyle = {
 
 const center = {
   lat: 40.015, // default latitude
-  lng: 255.9656, // default longitude
+  lng: 254.9656, // default longitude
 };
 
 export default function GymMap() {
