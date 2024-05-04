@@ -8,7 +8,7 @@ const mapContainerStyle = {
 
 const center = {
   lat: 40.015, // default latitude
-  lng: 254.9656, // default longitude
+  lng: 254.7356, // default longitude
 };
 
 
@@ -25,7 +25,7 @@ export default function GymMap() {
       ]);
     };
   return (
-    <GoogleMap mapContainerStyle={mapContainerStyle} zoom={8} center={center}onClick={onMapClick}
+    <GoogleMap mapContainerStyle={mapContainerStyle} zoom={13} center={center}onClick={onMapClick}
     >           
       {marks.map((marker) => (
           <Marker 
