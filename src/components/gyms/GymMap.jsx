@@ -25,8 +25,8 @@ export default function GymMap() {
       ]);
     };
   return (
-    <GoogleMap mapContainerStyle={mapContainerStyle} zoom={13} center={center}onClick={onMapClick}
-    >           
+    <GoogleMap mapContainerStyle={mapContainerStyle} zoom={13} center={center}onClick={onMapClick}> 
+      <Marker position={{lat: 40.0150, lng: 254.7356}} />          
       {marks.map((marker) => (
           <Marker 
             position={{ 
