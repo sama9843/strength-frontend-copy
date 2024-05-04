@@ -18,12 +18,13 @@ module.exports = merge(common, {
   ],
   devServer: {
     host: 'localhost',
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 8080,
     historyApiFallback: true,
     open: true,
     proxy: {
       '/api': {
-        target: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+        //target: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+        target: 'https://ep-strength.silvercrater.dev/api',
         pathRewrite: {'^/api' : ''}, // In this case we don't pass `api` path
         secure: false,
         changeOrigin: true

@@ -1,24 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { HTTP_GET, Request } from '../../utils/api';
 import WordCloud from 'react-d3-cloud';
+import Spinner from '../Spinner';
 
-const testwords = [
-  { text: "strength"},
-  { text: "weights"},
-  { text: "arms"},
-  { text: "legs"},
-  { text: "back"},
-  { text: "exercise"},
-  { text: "supplements"},
-  { text: "workout"},
-  { text: "conditioning"}
-];
 const fontSize = 30;
 const rotate = () => 0;
 
 
 export default function Wordcloud({error, errorCallback}) {
-  const [tips, setTips] = useState(null);
+  const [tips, setTips] = useState([]);
+  const words = []
   useEffect(() => {
     let ignore = false;
     if (!error) {
@@ -26,7 +17,10 @@ export default function Wordcloud({error, errorCallback}) {
         setTips(null);
         const response = (await new Request('v1/articles', HTTP_GET).background(errorCallback)).response;
         if (!ignore) {
-          setTips(response);
+          for (let article of response) {
+            words.push({text: article.title});
+          }
+          setTips(words);
         }
       })();
     }
@@ -36,17 +30,25 @@ export default function Wordcloud({error, errorCallback}) {
   }, [error]);
   return (
     <>
-      <WordCloud
-      width={1000}
-      height={200}
-      data={testwords}
-      //data={JSON.stringify(tips, null, 2)}
-      fontSize={fontSize}
-      rotate={rotate}
-      padding={3}
-      spiral="rectangular"
-      random={Math.random}
-  />
+      {tips instanceof Array ? (
+        tips.length > 2 ?
+          <ul className="article-list">
+            <WordCloud
+            width={1000}
+            height={200}
+            data={tips}
+            fontSize={fontSize}
+            rotate={rotate}
+            padding={3}
+            spiral="rectangular"
+            random={Math.random}/>
+          </ul> : <p className="font-bold pt-4">No current trends.</p>
+      ) : error ||
+        <div className="text-center">
+          <div className="w-10 h-10 mx-auto my-4">
+            <Spinner />
+          </div>
+        </div>}
     </>
   );
 }
